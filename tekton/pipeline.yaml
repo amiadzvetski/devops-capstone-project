@@ -14,8 +14,8 @@ spec:
   params:
     - name: repo-url
     - name: branch
-      default: main
     - name: build-image
+      default: main
   tasks:
     - name: init
       workspaces:
@@ -37,7 +37,7 @@ spec:
         value: $(params.branch)
       runAfter:
         - init
-
+        
     - name: lint
       workspaces:
         - name: source
@@ -51,7 +51,7 @@ spec:
         value: ["--count","--max-complexity=10","--max-line-length=127","--statistics"]
       runAfter:
         - clone
-
+        
     - name: tests
       workspaces:
         - name: source
@@ -65,7 +65,7 @@ spec:
         value: "-v --with-spec --spec-color"
       runAfter:
         - clone
-
+        
     - name: build
       workspaces:
         - name: source
@@ -79,7 +79,7 @@ spec:
       runAfter:
         - tests
         - lint
-
+        
     - name: deploy
       workspaces:
         - name: manifest-dir
