@@ -75,7 +75,7 @@ spec:
         kind: ClusterTask
       params:
       - name: IMAGE
-        value: "image-registry.openshift-image-registry.svc:5000/$SN_ICR_NAMESPACE/accounts:latest"
+        value: "$(params.build-image)"
       runAfter:
         - tests
         - lint
